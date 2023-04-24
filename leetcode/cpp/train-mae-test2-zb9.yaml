@@ -1,0 +1,20 @@
+class_name: TrainJobV2
+cluster_spec: "{\n        \"master\": { \"count\": 1,\n\t\t    \"cpu_limit\": \"10\"\
+  ,\n                    \"gpu_limit\": 1,\n\t\t    \"gpu_type\": \"v100\",\n\t\t\
+  \    \"gpu_memory\": \"32g\",\n\t\t    \"memory_limit\": \"50G\",\n\t\t    \"task_args\"\
+  : \"\"},\n\t\"worker\": {\"count\": 1,\n\t\t   \"cpu_limit\": \"10\",\n\t\t   \"\
+  gpu_limit\": 1,\n\t\t   \"gpu_type\": \"v100\",\n\t\t   \"gpu_memory\": \"32g\"\
+  ,\n\t\t   \"memory_limit\": \"50G\",\n\t\t   \"task_args\": \"\"}\n\t}"
+code_branch: master
+docker_command: trainer backbones --config-file backbones/mae/ss_mae_imnet.yaml --out-path
+  /jceph1
+docker_image: micr.cloud.mioffice.cn/cloudml/pytorch:1.10-cuda11.3.0-xm1.0.0-py3
+jceph_mounts: jceph1
+job_name: train-mae-test2-zb9
+loglevel: WARNING
+priority_class: guaranteed
+project_name: zb9-trainer
+sub_priority: low
+tensorboard_cpu: '0.5'
+tensorboard_mem: 0.5G
+thetis_mounts: ImageNet:2
